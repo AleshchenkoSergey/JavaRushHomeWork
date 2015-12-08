@@ -88,11 +88,13 @@ public class AdvertisementManager {
 
 
     public void processVideos() throws NoVideoAvailableException {
+        // Пункт 2.3: если нет рекламных видео, которые можно показать посетителю, бросаем исключение.
         if (storage.list().size() == 0||storage.list().isEmpty())
         {
             throw new NoVideoAvailableException();
         }
-        //пункт 5, добавляем в список доступных видео, только если количество показов у рекламного ролика - положительное число
+        //пункт 5, добавляем в список доступных видео, только если
+        // количество показов у рекламного ролика - положительное число
         ArrayList<Advertisement> inputVideos = new ArrayList<>();
         for (Advertisement ad : storage.list())
         {
@@ -123,43 +125,36 @@ public class AdvertisementManager {
         {
             throw new NoVideoAvailableException();
         }
-        // пункт 6, сортировка перед показом видео (вызывает подозрения, но по идее она должна была проверится на предыдущем задании)
+        // пункт 6, сортировка перед показом видео (вызывает подозрения,
+        // но по идее она должна была проверится на предыдущем задании)
         //пробовал несколько других вариантов сортировки - не помогло
-        Collections.sort(list, new Comparator<Advertisement>()
-        {
+        Collections.sort(list, new Comparator<Advertisement>() {
             @Override
-            public int compare(Advertisement o1, Advertisement o2)
-            {
-                if (o1.getAmountPerOneDisplaying() != o2.getAmountPerOneDisplaying())
-                {
-                    if (o1.getAmountPerOneDisplaying() > o2.getAmountPerOneDisplaying())
-                    {
+            public int compare(Advertisement o1, Advertisement o2) {
+                if (o1.getAmountPerOneDisplaying() != o2.getAmountPerOneDisplaying()) {
+                    if (o1.getAmountPerOneDisplaying() > o2.getAmountPerOneDisplaying()) {
                         return -1;
-                    } else
-                    {
+                    } else {
                         return 1;
                     }
-                } else
-                {
-                    if (1000 * o1.getAmountPerOneDisplaying() / o1.getDuration() == 1000 * o2.getAmountPerOneDisplaying() / o2.getDuration())
-                    {
+                } else {
+                    if (1000 * o1.getAmountPerOneDisplaying() / o1.getDuration() == 1000 * o2.getAmountPerOneDisplaying() / o2.getDuration()) {
                         return 0;
                     }
-                    if (1000 * o1.getAmountPerOneDisplaying() / o1.getDuration() > 1000 * o2.getAmountPerOneDisplaying() / o2.getDuration())
-                    {
+                    if (1000 * o1.getAmountPerOneDisplaying() / o1.getDuration() > 1000 * o2.getAmountPerOneDisplaying() / o2.getDuration()) {
                         return 1;
-                    } else
-                    {
+                    } else {
                         return -1;
                     }
                 }
             }
         });
-        for (Advertisement advertisement : list)
-        {
+
+        for (Advertisement advertisement : list) {
             ConsoleHelper.writeMessage(advertisement.getName() + " is displaying... "
-                                        + advertisement.getAmountPerOneDisplaying() + ", "
-                                            + 1000 * advertisement.getAmountPerOneDisplaying() / advertisement.getDuration());
+                    + advertisement.getAmountPerOneDisplaying() + ", "
+                    + 1000 * advertisement.getAmountPerOneDisplaying() / advertisement.getDuration());
+
             advertisement.revalidate();
         }
     }
