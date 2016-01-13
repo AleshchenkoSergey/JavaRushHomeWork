@@ -6,14 +6,12 @@ import com.javarush.test.level26.lesson15.big01.CurrencyManipulator;
 import com.javarush.test.level26.lesson15.big01.CurrencyManipulatorFactory;
 
 import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.ResourceBundle;
 
 /**
- * Created by sergey on 19.09.15.
+ * Created by sergey on 07.12.15.
  */
-class InfoCommand implements Command {
+public class InfoCommand implements Command {
     private ResourceBundle res =
             ResourceBundle.getBundle(CashMachine.RESOURCE_PATH + "info_en");
 
@@ -37,4 +35,5 @@ class InfoCommand implements Command {
             if (count == 0) ConsoleHelper.writeMessage(res.getString("no.money"));
         }
     }
+
 }

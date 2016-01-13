@@ -4,13 +4,12 @@ import com.javarush.test.level26.lesson15.big01.CashMachine;
 import com.javarush.test.level26.lesson15.big01.ConsoleHelper;
 import com.javarush.test.level26.lesson15.big01.exception.InterruptOperationException;
 
-import java.io.IOException;
 import java.util.ResourceBundle;
 
 /**
- * Created by sergey on 19.09.15.
+ * Created by sergey on 07.12.15.
  */
-class ExitCommand implements Command {
+public class ExitCommand implements Command {
     private ResourceBundle res =
             ResourceBundle.getBundle(CashMachine.RESOURCE_PATH + "exit_en");
 
@@ -26,4 +25,5 @@ class ExitCommand implements Command {
             ConsoleHelper.writeMessage(res.getString("thank.message"));
 
     }
+
 }

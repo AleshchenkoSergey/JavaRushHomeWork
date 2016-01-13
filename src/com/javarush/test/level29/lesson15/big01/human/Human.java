@@ -5,13 +5,15 @@ import java.util.Collections;
 import java.util.List;
 
 public class Human implements Alive {
-    public static int nextId = 0;
+    private static int nextId = 0;
     private int id;
-    protected int age;
-    protected String name;
-    protected int[] size;
-    private int bloodGroup;
+    private int age;
+    private String name;
     private List<Human> children = new ArrayList<>();
+
+    protected Size size = new Size();
+
+    private BloodGroup bloodGroup;
 
     public static final int FIRST = 1;
     public static final int SECOND = 2;
@@ -24,6 +26,11 @@ public class Human implements Alive {
         this.age = age;
         this.id = nextId;
         nextId++;
+    }
+
+    public class Size {
+        public int height;
+        public int weight;
     }
 
     public String getPosition() {
@@ -42,11 +49,17 @@ public class Human implements Alive {
         children.remove(human);
     }
 
-    public void setBloodGroup(int code) {
-        bloodGroup = code;
+    public void setBloodGroup(BloodGroup bg) {
+        switch (bg.getCode()) {
+            case 1: bloodGroup = BloodGroup.first(); break;
+            case 2: bloodGroup = BloodGroup.second(); break;
+            case 3: bloodGroup = BloodGroup.third(); break;
+            case 4: bloodGroup = BloodGroup.fourth(); break;
+
+        }
     }
 
-    public int getBloodGroup() {
+    public BloodGroup getBloodGroup() {
         return bloodGroup;
     }
 
@@ -78,11 +91,8 @@ public class Human implements Alive {
         return id;
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
-
     public void printSize() {
-        System.out.println("Рост: " + size[0] + " Вес: " + size[1]);
+        System.out.println("Рост: " + size.height +
+                            " Вес: " + size.weight);
     }
 }

@@ -1,7 +1,7 @@
 package com.javarush.test.level26.lesson15.big01.exception;
 
 /**
- * Created by sergey on 17.09.15.
+ * Created by sergey on 07.12.15.
  */
-public class NotEnoughMoneyException extends Exception {
+public class NotEnoughMoneyException extends Exception  {
 }

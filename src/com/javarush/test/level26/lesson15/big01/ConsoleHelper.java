@@ -8,7 +8,7 @@ import java.io.InputStreamReader;
 import java.util.ResourceBundle;
 
 /**
- * Created by sergey on 16.09.15.
+ * Created by sergey on 07.12.15.
  */
 public class ConsoleHelper {
     private static BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
@@ -86,4 +86,5 @@ public class ConsoleHelper {
     public static void printExitMessage() {
         writeMessage(res.getString("the.end"));
     }
+
 }

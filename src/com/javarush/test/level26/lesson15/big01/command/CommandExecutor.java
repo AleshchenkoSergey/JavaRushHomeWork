@@ -3,12 +3,11 @@ package com.javarush.test.level26.lesson15.big01.command;
 import com.javarush.test.level26.lesson15.big01.Operation;
 import com.javarush.test.level26.lesson15.big01.exception.InterruptOperationException;
 
-import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Created by sergey on 19.09.15.
+ * Created by sergey on 07.12.15.
  */
 public class CommandExecutor {
     static Map<Operation, Command> commandMap = new HashMap<>();
@@ -28,4 +27,5 @@ public class CommandExecutor {
     public static final void execute(Operation operation) throws InterruptOperationException {
         commandMap.get(operation).execute();
     }
+
 }

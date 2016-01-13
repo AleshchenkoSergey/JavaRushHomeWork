@@ -1,20 +1,20 @@
 package com.javarush.test.level26.lesson15.big01.command;
 
 import com.javarush.test.level26.lesson15.big01.CashMachine;
-import com.javarush.test.level26.lesson15.big01.exception.NotEnoughMoneyException;
 import com.javarush.test.level26.lesson15.big01.ConsoleHelper;
 import com.javarush.test.level26.lesson15.big01.CurrencyManipulator;
 import com.javarush.test.level26.lesson15.big01.CurrencyManipulatorFactory;
 import com.javarush.test.level26.lesson15.big01.exception.InterruptOperationException;
+import com.javarush.test.level26.lesson15.big01.exception.NotEnoughMoneyException;
 
 import java.util.Map;
 import java.util.NavigableMap;
 import java.util.ResourceBundle;
 
 /**
- * Created by sergey on 19.09.15.
+ * Created by sergey on 07.12.15.
  */
-class WithdrawCommand implements Command {
+public class WithdrawCommand implements Command {
     private ResourceBundle res =
             ResourceBundle.getBundle(CashMachine.RESOURCE_PATH + "withdraw_en");
 

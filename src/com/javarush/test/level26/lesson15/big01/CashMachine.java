@@ -6,10 +6,10 @@ import com.javarush.test.level26.lesson15.big01.exception.InterruptOperationExce
 import java.util.Locale;
 
 /**
- * Created by sergey on 16.09.15.
+ * Created by sergey on 07.12.15.
  */
 public class CashMachine {
-    public static final String RESOURCE_PATH = "com.javarush.test.level26.lesson15.big01.resources.";
+    public static final String RESOURCE_PATH = "resources.";
 
     public static void main(String[] args) {
         try

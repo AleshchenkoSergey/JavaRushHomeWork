@@ -1,7 +1,7 @@
 package com.javarush.test.level26.lesson15.big01;
 
 /**
- * Created by sergey on 16.09.15.
+ * Created by sergey on 07.12.15.
  */
 public enum Operation {
     INFO, DEPOSIT, WITHDRAW, EXIT, LOGIN;
@@ -22,5 +22,5 @@ public enum Operation {
                 throw new IllegalArgumentException();
         }
     }
-}
 
+}

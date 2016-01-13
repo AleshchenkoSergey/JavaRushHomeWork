@@ -4,13 +4,12 @@ import com.javarush.test.level26.lesson15.big01.CashMachine;
 import com.javarush.test.level26.lesson15.big01.ConsoleHelper;
 import com.javarush.test.level26.lesson15.big01.exception.InterruptOperationException;
 
-
 import java.util.ResourceBundle;
 
 /**
- * Created by sergey on 27.09.15.
+ * Created by sergey on 07.12.15.
  */
-class LoginCommand implements Command {
+public class LoginCommand implements Command {
     private ResourceBundle validCreditCards =
             ResourceBundle.getBundle(CashMachine.RESOURCE_PATH + "verifiedCards");
 
@@ -46,4 +45,5 @@ class LoginCommand implements Command {
         }
 
     }
+
 }

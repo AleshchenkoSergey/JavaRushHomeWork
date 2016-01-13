@@ -6,13 +6,12 @@ import com.javarush.test.level26.lesson15.big01.CurrencyManipulator;
 import com.javarush.test.level26.lesson15.big01.CurrencyManipulatorFactory;
 import com.javarush.test.level26.lesson15.big01.exception.InterruptOperationException;
 
-import java.io.IOException;
 import java.util.ResourceBundle;
 
 /**
- * Created by sergey on 19.09.15.
+ * Created by sergey on 07.12.15.
  */
-class DepositCommand implements Command {
+public class DepositCommand implements Command {
     private ResourceBundle res =
             ResourceBundle.getBundle(CashMachine.RESOURCE_PATH + "deposit_en");
 
@@ -37,4 +36,5 @@ class DepositCommand implements Command {
             }
         }
     }
+
 }

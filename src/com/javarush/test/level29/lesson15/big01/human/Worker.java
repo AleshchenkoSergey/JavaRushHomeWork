@@ -2,7 +2,7 @@ package com.javarush.test.level29.lesson15.big01.human;
 
 public class Worker extends Human {
     private double salary;
-    public String company;
+    private String company;
 
 
     public Worker(String name, int age)
@@ -10,6 +10,13 @@ public class Worker extends Human {
         super(name, age);
     }
 
+    public String getCompany() {
+        return company;
+    }
+
+    public void setCompany(String company) {
+        this.company = company;
+    }
 
     public double getSalary() {
         return salary;
@@ -18,4 +25,5 @@ public class Worker extends Human {
     public void setSalary(double salary) {
         this.salary = salary;
     }
+
 }

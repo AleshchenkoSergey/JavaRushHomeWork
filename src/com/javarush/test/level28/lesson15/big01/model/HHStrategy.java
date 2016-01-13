@@ -2,12 +2,12 @@ package com.javarush.test.level28.lesson15.big01.model;
 
 import com.javarush.test.level28.lesson15.big01.vo.Vacancy;
 import org.jsoup.Jsoup;
-import org.jsoup.examples.HtmlToPlainText;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -15,19 +15,44 @@ import java.util.List;
  */
 public class HHStrategy implements Strategy {
     private static final String URL_FORMAT = "http://hh.ua/search/vacancy?text=java+%s&page=%d";
+    private static final String USER_AGENT = "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/46.0.2490.71 Safari/537.36";
+    private static final String REFERRER = "google.ru";
+
+
+    private String fakeSite = "http://javarush.ru/testdata/big28data.html";
 
     @Override
     public List<Vacancy> getVacancies(String searchString) {
-        Document doc = null;
-        try {
-            doc = Jsoup.connect(URL_FORMAT).get();
-            System.out.println(doc.html());
-        } catch (IOException e) {
-            e.printStackTrace();
+        List<Vacancy> vacancies = new ArrayList<>();
+        int number = 0;
+
+        while (true)
+        {
+            Document document = null;
+
+            try {
+                document = getDocument(searchString, number++);
+            }
+            catch (IOException e) {}
+
+            Elements elements = document.body().getElementsByAttributeValue("data-qa", "vacancy-serp__vacancy");
+            if (!elements.isEmpty()) {
+                for (Element element : elements) {
+                    Vacancy vacancy = new Vacancy();
+                    vacancy.setUrl(element.getElementsByAttributeValue("data-qa", "vacancy-serp__vacancy-title").attr("href"));
+                    vacancy.setTitle(element.getElementsByAttributeValue("data-qa", "vacancy-serp__vacancy-title").text());
+                    vacancy.setCity(element.getElementsByAttributeValue("data-qa", "vacancy-serp__vacancy-address").text());
+                    vacancy.setCompanyName(
+                            element.getElementsByAttributeValue("data-qa", "vacancy-serp__vacancy-employer").text());
+                    vacancy.setSiteName("hh.ua");
+                    vacancy.setSalary(element.getElementsByAttributeValue("data-qa", "vacancy-serp__vacancy-compensation").text());
+                    vacancies.add(vacancy);
+                }
+            }
+            else {
+                return vacancies;
+            }
         }
-
-
-        return null;
     }
 
     private static void print(String msg, Object... args) {
@@ -35,17 +60,8 @@ public class HHStrategy implements Strategy {
     }
 
 
-    private Document getDocument(String searchString, int page) throws IOException {
-        return Jsoup.connect(String.format(URL_FORMAT, searchString, page)).
-                userAgent("Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2272.118 Safari/537.36").
-                referrer("http://www.google.ru").get();
+    Document getDocument(String searchString, int page) throws IOException {
+        String url = String.format(URL_FORMAT, searchString, page);
+        return Jsoup.connect(url).userAgent(USER_AGENT).referrer(REFERRER).get();
     }
-
-    private static String trim(String s, int width) {
-        if (s.length() > width)
-            return s.substring(0, width-1) + ".";
-        else
-            return s;
-    }
-
 }

@@ -4,13 +4,7 @@ import com.javarush.test.level28.lesson15.big01.model.HHStrategy;
 import com.javarush.test.level28.lesson15.big01.model.Provider;
 import com.javarush.test.level28.lesson15.big01.model.Strategy;
 import com.javarush.test.level28.lesson15.big01.vo.Vacancy;
-import org.jsoup.Jsoup;
-import org.jsoup.nodes.Document;
-import org.jsoup.nodes.Element;
-import org.jsoup.select.Elements;
 
-
-import java.io.IOException;
 import java.util.List;
 
 /**

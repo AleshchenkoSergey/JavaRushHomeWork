@@ -1,14 +1,11 @@
 package com.javarush.test.level26.lesson15.big01;
 
-
-
 import com.javarush.test.level26.lesson15.big01.exception.NotEnoughMoneyException;
 
 import java.util.*;
 
-
 /**
- * Created by sergey on 17.09.15.
+ * Created by sergey on 07.12.15.
  */
 public class CurrencyManipulator {
     private String currencyCode;
@@ -39,7 +36,7 @@ public class CurrencyManipulator {
 
     public void addAmount(int denomination, int count) {
 
-            denominations.put(denomination, count);
+        denominations.put(denomination, count);
 
     }
 
@@ -109,4 +106,5 @@ public class CurrencyManipulator {
         }
         return result;
     }
+
 }
